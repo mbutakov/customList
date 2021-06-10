@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace ConsoleApp2
 {
@@ -73,6 +73,24 @@ namespace ConsoleApp2
             return delEl;
         }
 
+        public int Search(T element)
+		{
+            ListElement<T> current = head;
+			for (int i = 0; i < size; i++)
+			{
+                if (current != null)
+                {
+                    if (current.value.Equals(element))
+                    {
+                        return i;
+                    }
+                }
+                current = current.next;
+            }
+            return 0;
+
+		}
+
         public ListElement<T> Remove(int index)
         {
             if (index > size || index < 0)
@@ -121,6 +139,63 @@ namespace ConsoleApp2
             return delEl;
         }
 
+
+        public void cut(int index)
+        {
+            ListElement<T> e = head;
+            int i = 0;
+            while (e.next != null)
+            {
+                e = e.next;
+                i++;
+                if (i == index)
+                {
+                    e.next = null;
+                }
+                
+            }
+        }
+
+        public void removeAll()
+		{
+            head = null;
+            prev = null;
+            list = null;
+		}
+
+
+        public void cut(int index,int lenght)
+        {
+            ListElement<T> e = head;
+            ListElement<T> startEl = null;
+            ListElement<T> endEl = null;
+
+            int i = 0;
+            while (e.next != null)
+            {
+                if (i == index)
+                {
+                    startEl = e;
+                }
+                if(i == index + lenght)
+				{
+                    endEl = e;
+				}
+                if (startEl != null && endEl != null)
+                {
+                    startEl.next = endEl;
+                    endEl.prev = startEl.next;
+                }
+                e = e.next;
+                i++;
+
+
+
+
+            }
+        }
+
+
         public void InsertBefore(int index, T number)
         {
             if (index > size || index < 0)
@@ -132,7 +207,7 @@ namespace ConsoleApp2
             ListElement<T> e = new ListElement<T>(number);
             while (current.next != null && index <= size && index != 0)
             {
-                if (i == index-1)
+                if (i == index - 1)
                 {
                     e.prev = current;
                     e.next = current.next;
@@ -141,7 +216,7 @@ namespace ConsoleApp2
                 current = current.next;
                 i++;
             }
-            if(index == 0)
+            if (index == 0)
             {
                 current.prev = e;
                 e.next = current;
@@ -149,7 +224,7 @@ namespace ConsoleApp2
             }
             if (current.next == null && index == size)
             {
-               current.next = e;
+                current.next = e;
             }
 
         }
@@ -173,7 +248,7 @@ namespace ConsoleApp2
                 current = current.next;
                 i++;
             }
-            if(current.next == null && index == size-1)
+            if (current.next == null && index == size - 1)
             {
                 current.next = e;
                 e.prev = current;

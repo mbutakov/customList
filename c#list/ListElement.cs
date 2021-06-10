@@ -1,4 +1,4 @@
-using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace ConsoleApp2
         public ListElement<T> prev;
         public ListElement(T value)
         {
-            
+
             this.value = value;
         }
     }

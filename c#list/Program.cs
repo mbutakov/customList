@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +27,19 @@ namespace ConsoleApp2
             Console.WriteLine("============");
             list.PopBack();
             list.PopFront();
+            list.addElement(111);
+            list.addElement(333);
+            list.Remove(0);
+            list.Print();
+            list.Remove(list.Search(333));
+            list.Print();
+            list.removeAll();
+			for (int i = 1; i < 25; i++)
+			{
+                list.addElement(i * 100);
+			}
+            list.Print();
+            list.cut(3, 5);
             list.Print();
             Console.ReadKey();
         }
